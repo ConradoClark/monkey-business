@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000011426539424}
+  m_IsPrefabParent: 1
+--- !u!1 &1000011426539424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000014148892010}
+  - 114: {fileID: 114000012079284240}
+  - 114: {fileID: 114000011507640870}
+  m_Layer: 0
+  m_Name: LevelStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000014148892010
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011426539424}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1857.9366, y: 226.11606, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000011507640870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011426539424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfe8bc07bd34ea468aa1a9b1c6add20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolInstance: {fileID: 0}
+  stats: {fileID: 114000012079284240}
+  timerSeconds: {fileID: 0}
+  timerSecondsOutline: {fileID: 0}
+  timerDecs: {fileID: 0}
+  timerDecsOutline: {fileID: 0}
+  score: {fileID: 0}
+  scoreOutline: {fileID: 0}
+  greenColor: {r: 0.15686275, g: 1, b: 0, a: 1}
+  warningColor: {r: 1, g: 0.97241366, b: 0, a: 1}
+  dangerColor: {r: 1, g: 0, b: 0, a: 1}
+  timeScoreFactor: 100
+  levelEnd: {fileID: 0}
+  globalTimeLayer: 0
+  nextLevel: Level2
+  nextLevelButton: {fileID: 0}
+--- !u!114 &114000012079284240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011426539424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9446b8095d50a429123c023e177ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimer: 30
+  timeLayer: 2
