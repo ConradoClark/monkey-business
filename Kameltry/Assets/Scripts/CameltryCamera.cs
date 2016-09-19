@@ -53,7 +53,7 @@ public class CameltryCamera : MonoBehaviour
 
             Physics2D.gravity = Vector2.SmoothDamp(Physics2D.gravity, mainCamera.transform.rotation * new Vector2(0, gravityValue) * (1 +
             t * 0.1f)
-            , ref gravityVelocity, 0.15f) * Toolbox.Instance.time.GetLayerMultiplier(timeLayer);
+            , ref gravityVelocity, 0.15f, float.MaxValue, Toolbox.Instance.time.GetDeltaTime(timeLayer));
         }
         else
         {            
@@ -61,7 +61,7 @@ public class CameltryCamera : MonoBehaviour
             t = Vector2.Angle(Physics2D.gravity, gyro * new Vector2(0, gravityValue));
             Physics2D.gravity = Vector2.SmoothDamp(Physics2D.gravity, gyro * new Vector2(0, gravityValue) * (1 +
             t * 0.1f)
-            , ref gravityVelocity, 0.15f) * Toolbox.Instance.time.GetLayerMultiplier(timeLayer);
+            , ref gravityVelocity, 0.15f, float.MaxValue, Toolbox.Instance.time.GetDeltaTime(timeLayer));
         }
 
 

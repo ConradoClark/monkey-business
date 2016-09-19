@@ -7,12 +7,10 @@ public class FrostyPoolManager : MonoBehaviour
 {
     public Dictionary<FrostyPoolInstance, FrostyPooledObject[]> pools { get; private set; }
     private GameObject pool;
-    private List<FrostyPoolInstance> cleanup;
 
     void Awake()
     {
         pools = new Dictionary<FrostyPoolInstance, FrostyPooledObject[]>();
-        cleanup = new List<FrostyPoolInstance>();
         pool = new GameObject("pooling");
         pool.transform.SetParent(this.transform);
     }
@@ -24,9 +22,11 @@ public class FrostyPoolManager : MonoBehaviour
         for (int i = 0; i < this.pools[instance].Length; i++)
         {
             FrostyPoolableObject[] poolBehaviours;
-            if (existing!=null && pools[existing].Length > i)
+            FrostyPooledObject[] existingPool = Object.ReferenceEquals(existing,null) ? new FrostyPooledObject[0] : pools.First(p => p.Key == existing).Value;
+
+            if (!Object.ReferenceEquals(existing, null) && existingPool.Length > i)
             {
-                this.pools[instance][i] = pools[existing][i];
+                this.pools[instance][i] = existingPool[i];
                 poolBehaviours = this.pools[instance][i].poolObject.GetComponentsInChildren<FrostyPoolableObject>();
                 this.pools[instance][i].poolBehaviours = poolBehaviours;
                 for (int p = 0; p < poolBehaviours.Length; p++)
@@ -56,18 +56,7 @@ public class FrostyPoolManager : MonoBehaviour
 
     public void Cleanup()
     {
-        foreach (FrostyPoolInstance instance in pools.Keys)
-        {
-            if (instance == null)
-            {
-                cleanup.Add(instance);
-            }
-        }
-        for (int i = 0; i < cleanup.Count; i++)
-        {
-            pools.Remove(cleanup[i]);
-        }
-        cleanup.Clear();
+        pools = new Dictionary<FrostyPoolInstance, FrostyPooledObject[]>(pools.Where(p => p.Key!=null).ToDictionary(p => p.Key, p => p.Value));
     }
 
     public GameObject Retrieve(FrostyPoolInstance poolInstance)

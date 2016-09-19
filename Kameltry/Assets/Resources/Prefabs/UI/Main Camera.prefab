@@ -16,15 +16,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010476736490}
-  - 20: {fileID: 20000011275821568}
-  - 92: {fileID: 92000010929198118}
-  - 124: {fileID: 124000013866955440}
-  - 81: {fileID: 81000010308055776}
-  - 114: {fileID: 114000013187721728}
-  - 114: {fileID: 114000012555199752}
+  - component: {fileID: 4000010476736490}
+  - component: {fileID: 20000011275821568}
+  - component: {fileID: 92000010929198118}
+  - component: {fileID: 124000013866955440}
+  - component: {fileID: 81000010308055776}
+  - component: {fileID: 114000013187721728}
+  - component: {fileID: 114000012555199752}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -41,10 +41,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1765, y: 230, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20000011275821568
 Camera:
   m_ObjectHideFlags: 1
@@ -137,7 +137,7 @@ MonoBehaviour:
   ccwButton: {fileID: 0}
   cwButton: {fileID: 0}
   turnButtonsEnabled: 0
-  timeLayer: 0
+  timeLayer: 2
 --- !u!124 &124000013866955440
 Behaviour:
   m_ObjectHideFlags: 1
