@@ -153,7 +153,9 @@
     <Compile Include="Assets\Scripts\LimitVelocity.cs" />
     <Compile Include="Assets\Scripts\MaintainRotation.cs" />
     <Compile Include="Assets\Scripts\OverUI.cs" />
+    <Compile Include="Assets\Scripts\Overworld\OverworldButtons.cs" />
     <Compile Include="Assets\Scripts\Pellet.cs" />
+    <Compile Include="Assets\Scripts\StartMenu\StartMenuButtons.cs" />
     <Compile Include="Assets\Scripts\TurnButton.cs" />
   </ItemGroup>
   <ItemGroup>
