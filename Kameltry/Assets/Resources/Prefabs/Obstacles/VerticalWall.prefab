@@ -16,15 +16,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013676315572}
-  - 50: {fileID: 50000010097227048}
-  - 61: {fileID: 61000010126027280}
-  - 114: {fileID: 114000013432805260}
-  - 33: {fileID: 33000012490299746}
-  - 23: {fileID: 23000012437945940}
-  - 114: {fileID: 114000012652780908}
+  - component: {fileID: 4000013676315572}
+  - component: {fileID: 50000010097227048}
+  - component: {fileID: 61000010126027280}
+  - component: {fileID: 114000013432805260}
+  - component: {fileID: 33000012490299746}
+  - component: {fileID: 23000012437945940}
+  - component: {fileID: 114000012652780908}
   m_Layer: 0
   m_Name: VerticalWall
   m_TagString: Untagged
@@ -41,10 +41,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000012437945940
 MeshRenderer:
   m_ObjectHideFlags: 2
@@ -59,7 +59,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 7a299ddd1cfa70547b49716c7b0328aa, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -83,17 +85,20 @@ MeshFilter:
   m_Mesh: {fileID: 0}
 --- !u!50 &50000010097227048
 Rigidbody2D:
-  serializedVersion: 2
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011285336644}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_IsKinematic: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -128,7 +133,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 0e865e7690d32144bbd72a237cb92de0, type: 3}
   numberOfTiles: {x: 1, y: 2}
   tilingType: 1
-  sortingOrder: 10
+  sortingOrder: 30
   instanceID: -85976
   dynamicSprite: 1
 --- !u!114 &114000013432805260

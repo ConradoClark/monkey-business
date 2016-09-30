@@ -22,7 +22,7 @@ public class FrostyPoolManager : MonoBehaviour
         for (int i = 0; i < this.pools[instance].Length; i++)
         {
             FrostyPoolableObject[] poolBehaviours;
-            FrostyPooledObject[] existingPool = Object.ReferenceEquals(existing,null) ? new FrostyPooledObject[0] : pools.First(p => p.Key == existing).Value;
+            FrostyPooledObject[] existingPool = Object.ReferenceEquals(existing, null) ? new FrostyPooledObject[0] : pools.First(p => p.Key == existing).Value;
 
             if (!Object.ReferenceEquals(existing, null) && existingPool.Length > i)
             {
@@ -56,7 +56,7 @@ public class FrostyPoolManager : MonoBehaviour
 
     public void Cleanup()
     {
-        pools = new Dictionary<FrostyPoolInstance, FrostyPooledObject[]>(pools.Where(p => p.Key!=null).ToDictionary(p => p.Key, p => p.Value));
+        pools = new Dictionary<FrostyPoolInstance, FrostyPooledObject[]>(pools.Where(p => p.Key != null).ToDictionary(p => p.Key, p => p.Value));
     }
 
     public GameObject Retrieve(FrostyPoolInstance poolInstance)
@@ -114,6 +114,79 @@ public class FrostyPoolManager : MonoBehaviour
             }
         }
         return Retrieve(pool.poolInstance, position, rotation);
+    }
+
+    public bool TryRetrieve(FrostyPoolableObject pool, Vector3 position, Quaternion rotation, out GameObject obj)
+    {
+        if (pool == null || pool.poolInstance == null)
+        {
+            throw new System.Exception("Invalid pool Object");
+        }
+
+        // No pool? 
+        if (!pools.ContainsKey(pool.poolInstance))
+        {
+            bool found = false;
+            // Check if a similar pool exists and reconnect
+            for (int i = 0; i < pools.Keys.Count; i++)
+            {
+                var elem = pools.Keys.ElementAt(i);
+                if (elem.objectType.GetInstanceID() == pool.poolInstance.objectType.GetInstanceID())
+                {
+                    pool.Connect(pools.Keys.ElementAt(i), true);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                obj = null;
+                return false;
+            }
+        }
+
+        if (TryRetrieve(pool.poolInstance, position, rotation, out obj))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool TryRetrieve(FrostyPoolInstance pool, Vector3 position, Quaternion rotation, out GameObject obj)
+    {
+        obj = null;
+
+        if (pool == null)
+        {
+            throw new System.Exception("Invalid or disconnected pool instance");
+        }
+
+        // No pool? 
+        if (!pools.ContainsKey(pool))
+        {
+            return false;
+        }
+
+        // Try to find an available slot from pool
+        for (int i = 0; i < pools[pool].Length; i++)
+        {
+            if (pools[pool][i].available)
+            {
+                pools[pool][i].poolObject.gameObject.SetActive(true);
+                for (int p = 0; p < pools[pool][i].poolBehaviours.Length; p++)
+                {
+                    pools[pool][i].poolBehaviours[p].ResetState();
+                }
+                pools[pool][i].poolObject.position = position;
+                pools[pool][i].poolObject.rotation = rotation;
+                pools[pool][i].available = false;
+                obj = pools[pool][i].poolObject.gameObject;
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public GameObject Retrieve(FrostyPoolInstance pool, Vector3 position, Quaternion rotation)

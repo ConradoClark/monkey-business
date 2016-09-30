@@ -144,9 +144,18 @@
     <Compile Include="Assets\Frosty2D\Scripts\Helper\Architecture\Toolbox.cs" />
     <Compile Include="Assets\Frosty2D\Scripts\Helper\Fixes\FixParticleRandomizeBug.cs" />
     <Compile Include="Assets\Scripts\CameltryCamera.cs" />
+    <Compile Include="Assets\Scripts\Effects\CameraSize.cs" />
     <Compile Include="Assets\Scripts\Effects\ColorWeave.cs" />
+    <Compile Include="Assets\Scripts\Effects\EnableDisableGalaxy.cs" />
+    <Compile Include="Assets\Scripts\Effects\GravityWeave.cs" />
+    <Compile Include="Assets\Scripts\Effects\ImpactOnCollision.cs" />
+    <Compile Include="Assets\Scripts\Effects\IntroBallBounce.cs" />
+    <Compile Include="Assets\Scripts\Effects\OpacityWeave.cs" />
     <Compile Include="Assets\Scripts\Effects\TextColorWeave.cs" />
     <Compile Include="Assets\Scripts\Effects\TextFadeUp.cs" />
+    <Compile Include="Assets\Scripts\Effects\TrailRendererLayerOrder.cs" />
+    <Compile Include="Assets\Scripts\GalaxyCamera.cs" />
+    <Compile Include="Assets\Scripts\LevelEnd.cs" />
     <Compile Include="Assets\Scripts\LevelGoal.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\LevelStats.cs" />
@@ -159,6 +168,7 @@
     <Compile Include="Assets\Scripts\TurnButton.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Shaders\LevelsShader.shader" />
     <None Include="Assets\Resources\Shaders\UVShader.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

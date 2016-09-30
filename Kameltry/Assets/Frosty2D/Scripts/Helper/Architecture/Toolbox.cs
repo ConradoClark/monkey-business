@@ -10,6 +10,7 @@ public class Toolbox : Singleton<Toolbox>
     public FrostyRandom random;
     public LevelManager levelManager;
     public OverUI overUI;
+    public GalaxyCamera galaxyCamera;
 
     protected Toolbox() { } // guarantee this will be always a singleton only - can't use the constructor!
     

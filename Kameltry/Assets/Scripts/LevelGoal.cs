@@ -32,7 +32,7 @@ public class LevelGoal : MonoBehaviour
 
         yield return Toolbox.Instance.levelManager.BlinkTimer();
         yield return Toolbox.Instance.levelManager.ConvertTimerToScore();
-        yield return Toolbox.Instance.levelManager.ShowLevelEnd();
+        yield return Toolbox.Instance.levelManager.ShowLevelEnd(true);
 
         yield break;
     }

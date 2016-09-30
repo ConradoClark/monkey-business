@@ -170,6 +170,7 @@
     <Compile Include="Assets\Frosty2D\Editor\Previews\TiledSpritePreview.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Shaders\LevelsShader.shader" />
     <None Include="Assets\Resources\Shaders\UVShader.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

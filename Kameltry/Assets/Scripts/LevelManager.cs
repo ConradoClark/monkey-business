@@ -25,13 +25,14 @@ public class LevelManager : FrostyPoolableObject
     public float timeScoreFactor;
     private int scorePadLeft;
 
-    public Transform levelEnd;
     public TimeLayers globalTimeLayer;
     public string nextLevel;
 
     public TurnButton nextLevelButton;
     private bool triggeredNextLevel;
 
+    private bool win;
+    public LevelEnd levelEnd;
     void Start()
     {
         Toolbox.Instance.levelManager = this;
@@ -46,6 +47,7 @@ public class LevelManager : FrostyPoolableObject
         scorePadLeft = score.text.Length;
 
         Toolbox.Instance.pool.Cleanup();
+        win = false;
     }
 
     void Update()
@@ -75,6 +77,12 @@ public class LevelManager : FrostyPoolableObject
         {
             triggeredNextLevel = true;
             GoToNextLevel();
+        }
+
+        if (IsTimerRunning() && currentTime == 0f)
+        {
+            StopTimer();
+            StartCoroutine(ShowLevelEnd(false));
         }
     }
 
@@ -110,9 +118,9 @@ public class LevelManager : FrostyPoolableObject
         }
     }
 
-    public IEnumerator ShowLevelEnd()
+    public IEnumerator ShowLevelEnd(bool win)
     {
-        levelEnd.gameObject.SetActive(true);
+        levelEnd.Show(win);
         yield break;
     }
 
